@@ -1,0 +1,33 @@
+#title_name{
+    font-size: 50px;
+    text-align: center;
+    padding: 0;
+    margin-top: 200px;
+}
+
+#name{
+    font-size: 20px;
+}
+
+
+#Profile{
+    font-size: 40px;
+    text-align: center;
+}
+
+#MP{
+    color: dodgerblue;
+    text-decoration: none;
+}
+
+#End_messages{
+    margin-top: 500px;
+}
+
+.panel-heading{
+    font-size: 30px;
+}
+
+#progress{
+    
+}
