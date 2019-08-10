@@ -37,22 +37,40 @@
         <script>
 
         const arr = [];
+        const saveArr = [];
         
+        // 입력하기
         function inputTest(value){
             arr.push(value);
+
             let count = arr.length;
-            console.log(count);
             let div = document.createElement('div');
-            div.innerHTML = '<div class="list-group-item"></div>';
-            document.getElementById("groupTest").appendChild(div).innerHTML = arr[count-1];
+            let content = arr.length + '. ' + arr[count-1];
             
+            saveArr.push(content);
+
+            div.innerHTML = '<div class="list-group-item"></div>';
+            document.getElementById("groupTest").appendChild(div).innerHTML = content;
+
         }
 
+        // 전체 지우기
         function eraseTest(){
             document.getElementById("groupTest").innerHTML = "";
         }
 
-
+        // 전체 불러오기
+        function loadTest(){
+            
+            let i = 0;
+            while(i < saveArr.length){
+                let div = document.createElement('div');
+                div.innerHTML = '<div class="list-group-item"></div>';
+                document.getElementById("groupTest").appendChild(div).innerHTML = saveArr[i];
+                i = i + 1;
+            }
+            
+        }
 
         </script>
 </head>
@@ -70,6 +88,7 @@
                 <div class="page-header">
                     <h2>Minza Daily</h2>
                 </div>
+
                 <input type="text" class="form-control" id="content" onfocus="this.value=''" value="내용을 입력하세요.." 
                     style= "width: 100%; " onkeypress="javascript:if(event.keyCode == 13){
                     let x = $('#content').val();      
@@ -77,24 +96,18 @@
                     value = ''; //입력하고 내용 지우기...
                 }">
 
+                <button type="button" class="btn" style= "float: right" onclick="loadTest()">불러오기</button>
                 <button type="button" class="btn" style= "float: right" onclick="eraseTest()">지우기</button>
             </div>
 
 
             <div class="list-group" id="groupTest"></div>
             
+            
 
 
         </div>
     
-        
-       
-
-
-        
-
-
-
 
 </body>
 </html>
