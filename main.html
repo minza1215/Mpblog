@@ -38,6 +38,7 @@
 
         const arr = [];
         const saveArr = [];
+        const pusaveArr = [];
         
         // 입력하기
         function inputTest(value){
@@ -45,11 +46,11 @@
 
             let count = arr.length;
             let div = document.createElement('div');
-            let content = arr.length + '. ' + arr[count-1];
+            let content = count + '. ' + arr[count-1] + `<input type="button" value="지우기" Onclick="puEraseTest(`+ count +`)"></input>`; //입력한 내용과 내용에 대한 Update 버튼 추가!
             
             saveArr.push(content);
 
-            div.innerHTML = '<div class="list-group-item"></div>';
+            div.innerHTML = '<div class="list-group-item" id="' + count + '"></div>';
             document.getElementById("groupTest").appendChild(div).innerHTML = content;
 
         }
@@ -71,6 +72,31 @@
             }
             
         }
+        
+        // 입력한 내용 한개 update하기
+        function puEraseTest(count){
+
+            document.getElementById("groupTest").innerHTML = "";
+
+            // 개별 지우기 기능의 중요한 조건문...
+            if(saveArr.length < count){
+                count = saveArr.length;
+            }
+
+            saveArr.splice(count-1, 1); // 해당 원소의 내용을 지우기.
+            arr.splice(count-1, 1); // 해당 원소의 내용을 지우기.
+
+            console.log(saveArr.length);
+           
+            let i = 0;
+            while(i < saveArr.length){
+                let div = document.createElement('div');
+                div.innerHTML = '<div class="list-group-item"></div>';
+                document.getElementById("groupTest").appendChild(div).innerHTML = saveArr[i];
+                i = i + 1;
+            }
+        }
+        
 
         </script>
 </head>
@@ -108,6 +134,7 @@
 
         </div>
     
+        
 
 </body>
 </html>
